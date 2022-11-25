@@ -7,7 +7,9 @@
 --
 -- Relación de Ejercicios 1. Ejercicios resueltos: 17 / 17
 -------------------------------------------------------------------------------
-import Test.QuickCheck
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use camelCase" #-}
+import Test.QuickCheck ( (==>), Property )
 
 
 ---------------------------------------
@@ -16,12 +18,13 @@ import Test.QuickCheck
 
 -- a)
 esTerna  :: Integer -> Integer -> Integer -> Bool
-esTerna x y z = (x*x + y*y == z*z)
+esTerna x y z = x*x + y*y == z*z
 
 
 -- b)
 terna :: Integer -> Integer -> (Integer, Integer, Integer)
 terna x y | (x > 0) && (y > 0) && (x > y) = (x*x-y*y, 2*x*y, x*x+y*y)
+          | otherwise = error "No es una terna pitagórica"
 
 
 -- c) y d)
